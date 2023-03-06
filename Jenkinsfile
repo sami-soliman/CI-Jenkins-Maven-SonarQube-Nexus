@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'git@github.com:sami-soliman/CI-Jenkins-Maven-SonarQube-Nexus.git'
+                    git branch: 'main', url: 'https://github.com/sami-soliman/CI-Jenkins-Maven-SonarQube-Nexus.git'
                 }
             }
         }
