@@ -59,7 +59,7 @@ pipeline{
         stage('UPload realse artifact to nexus'){
                 steps{
                     script{  
-                        nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'targets/Uber.jar', type: 'jar']],
+                        nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']],
                         credentialsId: 'nexus',
                         groupId: 'com.example',
                         nexusUrl: '172.19.0.3:8081',
