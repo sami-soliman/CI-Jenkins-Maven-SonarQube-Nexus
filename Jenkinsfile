@@ -14,6 +14,15 @@ pipeline{
                 }
             }
         }
+        stage('Unit Test'){
+            
+            steps{
+                
+                sh '''#!/bin/bash
+                 echo "performing uint testing" 
+                '''
+            }
+        }
         
 }
 }
