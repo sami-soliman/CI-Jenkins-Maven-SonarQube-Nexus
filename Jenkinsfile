@@ -19,7 +19,8 @@ pipeline{
             steps{
                 
                 sh '''#!/bin/bash
-                 echo "performing uint testing" 
+                 echo "performing uint testing"
+                 mvn test
                 '''
             }
         }
