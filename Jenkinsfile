@@ -7,12 +7,9 @@ pipeline{
         maven "maven"
     }
 
-    stages {
-        
+    stages {    
         stage('Git Checkout'){
-            
             steps{
-                
                 script{
                     
                     git branch: 'main', url: 'https://github.com/sami-soliman/CI-Jenkins-Maven-SonarQube-Nexus.git'
@@ -20,49 +17,37 @@ pipeline{
             }
         }
         stage('Unit Test'){
-            
             steps{
-                
                 sh '''#!/bin/bash
                  echo "performing uint testing"
                  mvn test
-                '''
+               '''
             }
         }
-        stage('Integration testing'){
-            
-            steps{
-                
+        stage('Integration testing'){           
+            steps{              
                 script{
                     
                     sh 'mvn verify -DskipUnitTests'
                 }
             }
         }
-        stage('Maven build'){
-            
-            steps{
-                
-                script{
-                    
+        stage('Maven build'){         
+            steps{              
+                script{  
                     sh 'mvn clean install'
                 }
             }
         }
-        stage('Static code analysis'){
-            
+        stage('Static code analysis'){         
             steps{
-                
-                script{
-                    
+                script{  
                     withSonarQubeEnv(credentialsId: 'sonarqube') {
                         
                         sh 'mvn clean package sonar:sonar'
                     }
                    }
-                    
                 }
             }
-            
         }
 }
