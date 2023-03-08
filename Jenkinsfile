@@ -65,7 +65,7 @@ pipeline{
                         nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']],
                         credentialsId: 'nexus',
                         groupId: 'com.example',
-                        nexusUrl: '172.19.0.4:8081',
+                        nexusUrl: '172.19.0.5:8081',
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         repository: database,
