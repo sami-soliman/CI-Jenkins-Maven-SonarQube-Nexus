@@ -58,8 +58,9 @@ pipeline{
             }
         stage('UPload realse artifact to nexus'){
                 steps{
-                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
-                    script{  
+                    
+                    script{
+                        def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
                         nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']],
                         credentialsId: 'nexus',
                         groupId: 'com.example',
