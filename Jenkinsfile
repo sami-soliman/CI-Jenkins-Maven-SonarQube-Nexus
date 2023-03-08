@@ -61,13 +61,14 @@ pipeline{
                     
                     script{
                         def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                        def database = version.endsWith("SNAPSHOT") ? "db-snapshot" "db-release"
                         nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']],
                         credentialsId: 'nexus',
                         groupId: 'com.example',
                         nexusUrl: '172.19.0.4:8081',
                         nexusVersion: 'nexus3',
                         protocol: 'http',
-                        repository: 'db-release',
+                        repository: database,
                         version: "${version}"
                     }
                 }
