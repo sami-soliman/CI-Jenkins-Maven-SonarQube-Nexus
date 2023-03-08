@@ -73,6 +73,26 @@ pipeline{
                     }
                 }
             }
+        stage('build docker image'){
+            steps{
+                script{
+                    sh 'docker image build -t $JOB_NAME:v-$BUILD_ID .'
+                    sh 'docker image tag $JOB_NAME:v-$BUILD_ID kubesami/$JOB_NAME:v-$BUILD_ID'
+                    sh 'docker image tag $JOB_NAME:v-$BUILD_ID kubesami/$JOB_NAME:latest'
+                }
+            }
+        }
+        stage('push docker image to HUB'){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        sh 'docker login -u $username -p $password'
+                        sh 'docker image push kubesami/$JOB_NAME:v-$BUILD_ID'
+                        sh 'docker image push kubesami/$JOB_NAME:latest'
+                    }
+                }
+            }
+        }
             
         }
 }
