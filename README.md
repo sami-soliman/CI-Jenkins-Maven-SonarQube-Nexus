@@ -1,5 +1,6 @@
 ﻿# Continuous Integration Pipeline
 # Jenkins -> Maven -> Sonarqube -> Nexus -> DockerHub
+![alt text](https://github.com/sami-soliman/CI-Jenkins-Maven-SonarQube-Nexus/blob/main/screenShots/jenkins1.jpg?raw=true)
 # 1) jenkins pipeline steps
 ![alt text](https://github.com/sami-soliman/CI-Jenkins-Maven-SonarQube-Nexus/blob/main/screenShots/5.png?raw=true)
 # 1) Nexus Artifacts ( db-release , db-snapshots )
